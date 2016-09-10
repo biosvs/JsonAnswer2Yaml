@@ -2,6 +2,7 @@
 
 namespace JsonAnswer2Yaml;
 
+use JsonAnswer2Yaml\Helpers\Console;
 use JsonAnswer2Yaml\Helpers\Traits\YamlFormatterTrait;
 
 class Model
@@ -91,7 +92,12 @@ class Model
         if (is_array($elementValue)) {
             $result .= $this->getLineStringRef($lvl + 1, $parameterName);
 
-            $model = new Model($parameterName, $elementValue, static::DEFINITIONS_OFFSET + 3);
+            $modelName = complexUcwords($parameterName);
+
+            Console::writeLn('I found the new model. Is it good name? (Write new name or just press enter.)');
+            $modelName = Console::prompt(sprintf('Model "%s": ', $modelName), $modelName);
+
+            $model = new Model($modelName, $elementValue, static::DEFINITIONS_OFFSET + 3);
 
             $this->outlineModels[] = $model;
             $this->outlineModels = array_merge($this->outlineModels, $model->getOutlineModels());

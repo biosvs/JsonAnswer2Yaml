@@ -34,4 +34,13 @@ class Console
         static::writeLn('[Error] ' . $msg);
         die;
     }
+
+    public static function prompt($msg, $default = '')
+    {
+        static::write($msg .' ');
+
+        $line = trim(fgets(STDIN));
+
+        return $line !== '' ? $line : $default;
+    }
 }
