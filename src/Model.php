@@ -75,7 +75,9 @@ class Model
                 $result .= $this->getLineString($lvlUp, 'description');
                 $result .= $this->getLineString($lvlUp, 'items');
 
-                $result .= $this->parseArrayElement($parameterName, $parameterValue[0], $lvlUp + 1);
+                $firstValue = isset($parameterValue[0]) ? $parameterValue[0] : null;
+
+                $result .= $this->parseArrayElement($parameterName, $firstValue, $lvlUp + 1);
             }
         }
 
