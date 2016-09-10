@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpAnnotator\Helpers\Traits;
+namespace JsonAnswer2Yaml\Helpers\Traits;
 
 trait YamlFormatterTrait {
     protected function getLineString($lvl, $name, $value = '')

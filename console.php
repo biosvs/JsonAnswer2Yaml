@@ -2,8 +2,8 @@
 
 include 'autoload.php';
 
-use PhpAnnotator\Helpers\Console;
-use PhpAnnotator\Program;
+use JsonAnswer2Yaml\Helpers\Console;
+use JsonAnswer2Yaml\Program;
 
 $showHelp = ($argc < 3 || in_array($argv[1], ['help', '-h', 'h']));
 

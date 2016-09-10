@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpAnnotator\Helpers;
+namespace JsonAnswer2Yaml\Helpers;
 
 class FormatHelper {
     public static function convertBytes($number)

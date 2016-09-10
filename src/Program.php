@@ -1,10 +1,10 @@
 <?php
 
-namespace PhpAnnotator;
+namespace JsonAnswer2Yaml;
 
-use PhpAnnotator\Helpers\Config;
-use PhpAnnotator\Helpers\Console;
-use PhpAnnotator\Helpers\Traits\YamlFormatterTrait;
+use JsonAnswer2Yaml\Helpers\Config;
+use JsonAnswer2Yaml\Helpers\Console;
+use JsonAnswer2Yaml\Helpers\Traits\YamlFormatterTrait;
 
 class Program
 {

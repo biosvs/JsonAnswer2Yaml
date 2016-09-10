@@ -1,8 +1,8 @@
 <?php
 
-namespace PhpAnnotator;
+namespace JsonAnswer2Yaml;
 
-use PhpAnnotator\Helpers\Traits\YamlFormatterTrait;
+use JsonAnswer2Yaml\Helpers\Traits\YamlFormatterTrait;
 
 class Model
 {
