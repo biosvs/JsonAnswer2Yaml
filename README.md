@@ -1,7 +1,7 @@
 # JsonAnswer2Yaml
 It is a tool that allows you to convert a json server response in a yaml file in accordance with the [Swagger specification 2.0](http://swagger.io/specification/).
 
-#Usage
+# Usage
 ```
 ./run /method/url input.json [output.yaml]
 ```

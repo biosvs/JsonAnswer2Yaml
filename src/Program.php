@@ -10,15 +10,23 @@ class Program
 {
     use YamlFormatterTrait;
 
+    /** @var string */
     protected $methodUrl;
 
+    /** @var string */
     protected $inputFile;
 
+    /** @var string */
     protected $outputFile;
 
     /** @var Model[] */
     protected $outlineModels = [];
 
+    /**
+     * @param string $methodUrl
+     * @param string $inputFile
+     * @param string $outputFile
+     */
     public function __construct($methodUrl, $inputFile, $outputFile)
     {
         $this->methodUrl = str_replace('/', '.', trim($methodUrl, '/'));
@@ -26,6 +34,9 @@ class Program
         $this->outputFile = $outputFile;
     }
 
+    /**
+     * Main method of program
+     */
     public function doIt()
     {
         $arr = $this->getParsedArray();
@@ -45,6 +56,10 @@ class Program
         file_put_contents(__DIR__ . '/../' . $this->outputFile, $result);
     }
 
+    /**
+     * @param Model[] $outlineModels
+     * @return string
+     */
     protected function createDefinitions(array $outlineModels)
     {
         $result  = PHP_EOL . PHP_EOL;
@@ -65,6 +80,9 @@ class Program
         return $result;
     }
 
+    /**
+     * @return array
+     */
     protected function getParsedArray()
     {
         $content = file_get_contents($this->inputFile);

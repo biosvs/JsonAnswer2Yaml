@@ -9,42 +9,61 @@ class Model
 {
     use YamlFormatterTrait;
 
+    /** Offset in tabs (by 2 spaces) */
     const RESPONSE_CODE_OFFSET = 0;
     const DEFINITIONS_OFFSET = 0;
 
+    /** @var string Model name */
     protected $name = '';
 
-    protected $result = '';
+    /** @var array Result in yaml format and used fields */
+    protected $result = [];
 
     /** @var Model[] */
     protected $outlineModels = [];
 
+    /**
+     * @param string $name Model name
+     * @param array $rawObject Parsed array from json
+     * @param int $lvl Offset in tabs
+     */
     public function __construct($name, $rawObject, $lvl)
     {
         $this->name = $name;
         $this->result = $this->parseObject($rawObject, $lvl);
     }
 
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
     }
 
+    /**
+     * Return nested models
+     *
+     * @return Model[]
+     */
     public function getOutlineModels()
     {
         return $this->outlineModels;
     }
 
+    /**
+     * @return array
+     */
     public function getResult()
     {
         return $this->result;
     }
 
+    /**
+     * @param array $obj Array for parse
+     * @param int $lvl Offset in tabs
+     * @return array Result in yaml format and used fields
+     */
     protected function parseObject($obj, $lvl)
     {
         $result = '';
@@ -85,6 +104,12 @@ class Model
         return [$result, $fields];
     }
 
+    /**
+     * @param string $parameterName
+     * @param string|array $elementValue
+     * @param int $lvl Offset in tabs
+     * @return string
+     */
     protected function parseArrayElement($parameterName, $elementValue, $lvl)
     {
         $result = '';
@@ -108,6 +133,11 @@ class Model
         return $result;
     }
 
+    /**
+     * @param int $lvl Offset in tabs
+     * @param mixed $value
+     * @return string
+     */
     protected function getScalarValueScheme($lvl, $value)
     {
         $type = '';
