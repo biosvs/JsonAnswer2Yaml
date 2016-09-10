@@ -152,7 +152,7 @@ class Model
 
             case is_float($value):
                 $type = 'number';
-                $format = 'float';
+                $format = 'double';
                 break;
 
             case is_bool($value):
