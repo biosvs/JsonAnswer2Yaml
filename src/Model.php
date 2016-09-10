@@ -106,6 +106,7 @@ class Model
     {
         $type = '';
         $format = '';
+        $nullable = false;
 
         switch(true) {
             case is_int($value):
@@ -126,6 +127,11 @@ class Model
                 $type = 'string';
                 break;
 
+            case is_null($value):
+                $type = 'null';
+                $nullable = true;
+                break;
+
             default:
                 $type = 'undefined';
         }
@@ -134,6 +140,10 @@ class Model
 
         if ($format !== '') {
             $result .= $this->getLineString($lvl, 'format', $format);
+        }
+
+        if ($nullable) {
+            $result .= $this->getLineString($lvl, 'x-nullable', 'true');
         }
 
         return $result;
